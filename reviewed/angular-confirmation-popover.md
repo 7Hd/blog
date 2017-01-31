@@ -5,6 +5,13 @@
   - [Set Defaults to Other Module](#set-defaults-to-other-module)
   - [Positioning](#positioning)
   - [Renderer Service](#renderer-service)
+  - [ViewContainerRef](#viewcontainerref)
+    - [Get ViewContainerRef with dependency injection](#get-viewcontainerref-with-dependency-injection)
+    - [Get ViewContainerRef with ViewChild](#get-viewcontainerref-with-viewchild)
+    - [Create Component with Injector](#create-component-with-injector)
+  - [Inject Dcoument](#inject-dcoument)
+  - [Host Listen Document Event](#host-listen-document-event)
+  - [Host Listen Window Event](#host-listen-window-event)
 
 <!-- /TOC -->
 
@@ -13,6 +20,20 @@
 * Project: [link](https://github.com/mattlewis92/angular-confirmation-popover)
 * Docs: [link](https://mattlewis92.github.io/angular-confirmation-popover/docs/)
 * Demo: [link](https://mattlewis92.github.io/angular-confirmation-popover/)
+
+```HTML
+<button
+ class="btn btn-default"
+ mwlConfirmationPopover
+ [title]="title"
+ [message]="message"
+ placement="left"
+ (confirm)="confirmClicked = true"
+ (cancel)="cancelClicked = true"
+ [(isOpen)]="isOpen">
+  Show confirm popover!
+</button>
+```
 
 
 # Learned
@@ -61,6 +82,7 @@ export class OtherModule {
 * [ng-bootstrap Positioning class as a standalone module](https://github.com/mattlewis92/positioning/)
 
 ```typescript
+// Copy from README.md
 import { Positioning } from 'positioning';
 
 const positioning = new Positioning();
@@ -86,3 +108,106 @@ export class ExploreRendererDirective {
   }
 }
 ```
+
+```typescript
+// Example
+this.renderer.invokeElementMethod(this.elm.nativeElement, 'focus', []);
+this.renderer.setElementStyle(popoverElement, 'top', '100px');
+```
+
+## ViewContainerRef
+
+* [ViewContainerRef official docs](https://angular.io/docs/ts/latest/api/core/index/ViewContainerRef-class.html)
+* [Understanding ViewContainerRef in Angular 2](https://netbasal.com/angular-2-understanding-viewcontainerref-acc183f3b682#.6s41s2ozp)
+
+### Get ViewContainerRef with dependency injection
+
+```typescript
+@Component({
+  selector: 'vcr',
+  template: `
+    <template #tpl>
+      <h1>ViewContainerRef</h1>
+    </template>
+  `,
+})
+export class VcrComponent {
+  @ViewChild('tpl') tpl;
+  constructor(private _vcr: ViewContainerRef) { }
+
+  ngAfterViewInit() { this._vcr.createEmbeddedView(this.tpl); }
+}
+```
+
+### Get ViewContainerRef with ViewChild
+
+```typescript
+@Component({
+  selector: 'vcr',
+  template: `
+    <template #tpl>
+      <h1>ViewContainerRef</h1>
+    </template>
+    <div>Some element</div>
+    <div #container></div>
+  `,
+})
+export class VcrComponent {
+  @ViewChild('container', { read: ViewContainerRef }) _vcr;
+  @ViewChild('tpl') tpl;
+
+  ngAfterViewInit() { this._vcr.createEmbeddedView(this.tpl); }
+}
+```
+
+### Create Component with Injector
+
+The component is instantiated using its `ComponentFactory` which can be obtained via `ComponentFactoryResolver`.
+
+```typescript
+import { ComponentFactoryResolver, ViewContainerRef, ComponentRef, ReflectiveInjector, ResolvedReflectiveProvider, Injector } from '@angular/core';
+
+// use example
+const componentFactory: ComponentFactory<SomeComponent> = this.componentFactoryResolver.resolveComponentFactory(SomeComponent);
+const binding: ResolvedReflectiveProvider[] = ReflectiveInjector.resolve([{ provide: SomeProvide, useValue: provideValue }]);
+const contextInjector: Injector = this.viewContainerRef.parentInjector;
+const childInjector: Injector = ReflectiveInjector.fromResolvedProviders(binding, contextInjector);
+const childComponent: ComponentRef<SomeComponent> = this.viewContainerRef.createComponent(componentFactory, this.viewContainerRef.length, childInjector);
+```
+
+* [ReflectiveInjector official docs](https://angular.io/docs/ts/latest/api/core/index/ReflectiveInjector-class.html)
+* [ComponentRef official docs](https://angular.io/docs/ts/latest/api/core/index/ComponentRef-class.html)
+* [Injector official docs](https://angular.io/docs/ts/latest/api/core/index/Injector-class.html)
+
+## Inject Dcoument
+
+```typescript
+import { DOCUMENT } from '@angular/platform-browser';
+
+@Component({...})
+export class SomeComponent {
+  constructor(@Inject(DOCUMENT) private document) { }
+}
+```
+
+## Host Listen Document Event
+
+```typescript
+@Directive({...})
+export class SomeDirective {
+  @HostListener('document:click', ['$event.target'])
+  @HostListener('document:touchend', ['$event.target'])
+  onDocumentClick(target: HTMLElement): void { }
+}
+```
+
+## Host Listen Window Event
+
+```typescript
+@Directive({...})
+export class SomeDirective {
+  @HostListener('window:resize')
+  onResize(): void { }
+}
+```
+
