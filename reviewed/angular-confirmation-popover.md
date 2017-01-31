@@ -12,6 +12,7 @@
   - [Inject Dcoument](#inject-dcoument)
   - [Host Listen Document Event](#host-listen-document-event)
   - [Host Listen Window Event](#host-listen-window-event)
+  - [Template](#template)
 
 <!-- /TOC -->
 
@@ -211,3 +212,30 @@ export class SomeDirective {
 }
 ```
 
+## Template
+
+* [Template official docs](https://angular.io/docs/ts/latest/guide/template-syntax.html)
+* [NgTemplateOutlet official docs](https://angular.io/docs/ts/latest/api/common/index/NgTemplateOutlet-directive.html)
+* [Template Tag](http://blog.kevinyang.net/2016/11/12/ng2-template/)
+* [Angular 2 ng-container Stackoverflow](http://stackoverflow.com/questions/39547858/angular-2-ng-container)
+
+```typescript
+// Copy from official doc
+@Component({
+  selector: 'ng-template-outlet-example',
+  template: `
+    <ng-container *ngTemplateOutlet="greet"></ng-container>
+    <hr>
+    <ng-container *ngTemplateOutlet="eng; context: myContext"></ng-container>
+    <hr>
+    <ng-container *ngTemplateOutlet="svk; context: myContext"></ng-container>
+    <hr>
+    <template #greet><span>Hello</span></template>
+    <template #eng let-name><span>Hello {{name}}!</span></template>
+    <template #svk let-person="localSk"><span>Ahoj {{person}}!</span></template>
+`
+})
+class NgTemplateOutletExample {
+  myContext = {$implicit: 'World', localSk: 'Svet'};
+}
+```
