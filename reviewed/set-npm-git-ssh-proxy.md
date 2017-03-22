@@ -1,0 +1,77 @@
+# Ref.
+
+* [ssh in git behind proxy on windows 7](http://stackoverflow.com/questions/5103083/ssh-in-git-behind-proxy-on-windows-7)
+* [NPM behind a proxy](https://github.com/npm/npm/issues/9401)
+* [如何在強制使用代理伺服器的環境下設定 git, npm, bower, gem, ionic 工具](http://blog.miniasp.com/post/2015/09/02/proxy-settings-for-git-npm-bower-gem-ionic.aspx)
+* [Angular 2 學習筆記 00 - 緣起與開發環境建置](https://dotblogs.com.tw/topcat/2016/12/19/153702)
+
+# NPM
+
+```sh
+npm config set registry http://registry.npmjs.org
+npm config set http-proxy http://USERNAME:PASSWORD@IP:PORT
+npm config set https-proxy http://USERNAME:PASSWORD@IP:PORT
+npm set strict-ssl false
+```
+
+in `C:\Users\USERNAME\.npmrc`:
+
+```
+registry=http://registry.npmjs.org
+proxy=http://USERNAME:PASSWORD@IP:PORT
+http-proxy=http://USERNAME:PASSWORD@IP:PORT
+https-proxy=http://USERNAME:PASSWORD@IP:PORT
+strict-ssl=false
+
+```
+
+# GIT
+
+
+```sh
+git config --global http.proxy http://USERNAME:PASSWORD@IP:PORT
+git config --global https.proxy http://USERNAME:PASSWORD@IP:PORT
+```
+
+in `C:\Users\USERNAME\.gitconfig`:
+
+```
+[http]
+	proxy = http://USERNAME:PASSWORD@IP:PORT
+[https]
+	proxy = http://USERNAME:PASSWORD@IP:PORT
+```
+
+# SSH
+
+in `C:\Users\USERNAME\.ssh\config`:
+
+```
+ProxyCommand connect -H IP:PORT %h %p
+
+Host github.com
+  User git
+  Port 22
+  Hostname github.com
+  IdentityFile "C:\users\USERNAME\.ssh\id_rsa"
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+Host ssh.github.com
+  User git
+  Port 443
+  Hostname ssh.github.com
+  IdentityFile "C:\users\USERNAME\.ssh\id_rsa"
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+```
+
+# VS CODE
+
+in `setting.json`:
+
+```json
+{
+  "http.proxy": "http://USERNAME:PASSWORD@IP:PORT",
+}
+```
