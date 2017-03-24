@@ -5,10 +5,25 @@
 * [如何在強制使用代理伺服器的環境下設定 git, npm, bower, gem, ionic 工具](http://blog.miniasp.com/post/2015/09/02/proxy-settings-for-git-npm-bower-gem-ionic.aspx)
 * [Angular 2 學習筆記 00 - 緣起與開發環境建置](https://dotblogs.com.tw/topcat/2016/12/19/153702)
 
-# NPM
+# Hint
+
+* `http://USERNAME:PASSWORD@IP:PORT` 可以改為 `http://IP:PORT`。
+
+# Setting
+
+<!-- TOC depthFrom:2 -->
+
+- [NPM](#npm)
+- [GIT](#git)
+- [SSH](#ssh)
+- [VS CODE](#vs-code)
+- [NVM](#nvm)
+
+<!-- /TOC -->
+
+## NPM
 
 ```sh
-npm config set registry http://registry.npmjs.org
 npm config set http-proxy http://USERNAME:PASSWORD@IP:PORT
 npm config set https-proxy http://USERNAME:PASSWORD@IP:PORT
 npm set strict-ssl false
@@ -17,7 +32,6 @@ npm set strict-ssl false
 in `C:\Users\USERNAME\.npmrc`:
 
 ```
-registry=http://registry.npmjs.org
 proxy=http://USERNAME:PASSWORD@IP:PORT
 http-proxy=http://USERNAME:PASSWORD@IP:PORT
 https-proxy=http://USERNAME:PASSWORD@IP:PORT
@@ -25,7 +39,7 @@ strict-ssl=false
 
 ```
 
-# GIT
+## GIT
 
 
 ```sh
@@ -42,7 +56,7 @@ in `C:\Users\USERNAME\.gitconfig`:
 	proxy = http://USERNAME:PASSWORD@IP:PORT
 ```
 
-# SSH
+## SSH
 
 in `C:\Users\USERNAME\.ssh\config`:
 
@@ -66,7 +80,7 @@ Host ssh.github.com
   IdentitiesOnly yes
 ```
 
-# VS CODE
+## VS CODE
 
 in `setting.json`:
 
@@ -74,4 +88,24 @@ in `setting.json`:
 {
   "http.proxy": "http://USERNAME:PASSWORD@IP:PORT",
 }
+```
+
+
+## NVM
+
+* [nvm github](https://github.com/creationix/nvm)
+* [nvm-window github](https://github.com/coreybutler/nvm-windows)
+
+```sh
+# set proxy
+nvm proxy http://USERNAME:PASSWORD@IP:PORT
+
+# show a list of versions available for download.
+nvm list available
+
+# install node
+nvm install NODE_VERSION
+
+# set use node version
+nvm use NODE_VERSION
 ```
