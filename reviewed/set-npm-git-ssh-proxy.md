@@ -78,6 +78,14 @@ Host ssh.github.com
   IdentityFile "C:\users\USERNAME\.ssh\id_rsa"
   TCPKeepAlive yes
   IdentitiesOnly yes
+
+Host bitbucket.org
+  User git
+  Port 22
+  Hostname bitbucket.org
+  IdentityFile "C:\users\USERNAME\.ssh\id_rsa"
+  TCPKeepAlive yes
+  IdentitiesOnly yes
 ```
 
 ## VS CODE
