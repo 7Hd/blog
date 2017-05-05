@@ -13,12 +13,13 @@
       3. alter Table
       4. click `View SQL` and copy SQL
       5. click `Apply` to commit
-2. Create `xxx.sql` file to `<FOLSER>\SQL`, `<FOLSER>` as blow:
+2. Create `xxx.sql` file to `<FOLSER>\SQL` or `<FOLSER>\Tables`, `<FOLSER>` as blow:
     * DEV: DEVDB for development (SAT)
     * `UAT`: TESTDB for user (UAT)
     * `PreProb`: DRDB will copy Prob DB each day.
     * `Prod2`: for product
-3. Create `<ID>_[<ORDER_ID>]_<DATE>_<No>.bat`
+    * New Table need `TAFIR`
+3. Create `<ID>[_<ORDER_ID>]_<DATE>_<No>.bat`
     ```bat
       @ECHO OFF
       CALL ONLINE \path\to\xxx.sql
