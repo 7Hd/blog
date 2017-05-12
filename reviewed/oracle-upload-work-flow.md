@@ -13,15 +13,16 @@
       3. alter Table
       4. click `View SQL` and copy SQL
       5. click `Apply` to commit
-2. Create `xxx.sql` file to `<FOLSER>\SQL` or `<FOLSER>\Tables`, `<FOLSER>` as blow:
+2. Create `xxx.sql` file to `<FOLSER>\SQL` , `<FOLSER>\Tables` or `<FOLSER>\Sequences`.  `<FOLSER>` as blow:
     * DEV: DEVDB for development (SAT)
     * `UAT`: TESTDB for user (UAT)
     * `PreProb`: DRDB will copy Prob DB each day.
     * `Prod2`: for product
-    * New Table need `TAFIR`
+    * Create Table need `TAFIR` authority or `xxx.sql` file name `xxx` equal to table name.
 3. Create `<ID>[_<ORDER_ID>]_<DATE>_<No>.bat`
     ```bat
       @ECHO OFF
+      SET NLS_LANG=TRADITIONAL CHINESE_TAIWAN.ZHT16MSWIN950
       CALL ONLINE \path\to\xxx.sql
       @ECHO ON
     ```
