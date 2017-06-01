@@ -40,7 +40,7 @@
 
 ### Extensions
 
-
+* [開發 Angular 必備 VSCode 擴充套件](https://paper.dropbox.com/doc/Angular-VSCode--Kh2w3saOyZtJSHawFoBem)
 
 ## Introduction Angular CLI
 
@@ -63,5 +63,6 @@
 * [taobao fed: nvm or n (2015-11-17)](http://taobaofed.org/blog/2015/11/17/nvm-or-n/)
 * [doggy8088/Angular4開發環境說明.md](https://gist.github.com/doggy8088/15e434b43992cf25a78700438743774a)
 * [Youtube Editor 編輯者](https://www.youtube.com/channel/UC8-c0VKKqkG_aPe0RG3SF0A)
+* [Angular Taiwan](https://forum.angular.tw)
 
 # Appendix
