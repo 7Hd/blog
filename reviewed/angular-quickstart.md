@@ -92,16 +92,16 @@ Scaffold  | Usage
 
 ### Flow
 
-Todo Eample:
+[Todo Example Project](https://github.com/7Hd/angular-bootstrap-todo):
 
-* `ng new todo`
-* `ng g component todo-list`
-* `ng g module shared -m app`
-* `ng g service shared\todo-data -m shared`
-* `ng g class models\todo`
-* `ng g enum shared\todo-priority`
-* `ng g pipe shared\enum-array --export shared`
-
+* `ng new todo --skip-tests --prefix td`
+* `ng generate component todo-list --inline-style`
+* `ng generate component todo --inline-style --inline-template --flat`
+* `ng generate module shared --module app`
+* `ng generate service shared\todo-data --module shared`
+* `ng generate class models\todo`
+* `ng generate enum shared\todo-priority`
+* `ng generate pipe shared\enum-array --export shared`
 
 
 # Reference
