@@ -42,6 +42,28 @@
 * [Visual Studio Code 快速上手指南 (20160530)](https://www.slideshare.net/shengyou/visual-studio-code-62532711)
 * [活用 Visual Studio Code (20150919)](https://channel9.msdn.com/Series/Mastering-Visual-Studio-Code)
 
+Capture from [Visual Studio Code Tips and Tricks](https://github.com/Microsoft/vscode-tips-and-tricks):
+
+* Basics
+  * [Command Palette](https://github.com/Microsoft/vscode-tips-and-tricks#command-palette)
+  * [Quick open](https://github.com/Microsoft/vscode-tips-and-tricks#quick-open)
+  * [CLI tool](https://github.com/Microsoft/vscode-tips-and-tricks#cli-tool)
+  * [.vscode folder](https://github.com/Microsoft/vscode-tips-and-tricks#vscode-folder)
+  * [Status bar decorations](https://github.com/Microsoft/vscode-tips-and-tricks#status-bar-decorations)
+* Customization
+  * [Theme](https://github.com/Microsoft/vscode-tips-and-tricks#change-your-theme)
+  * [Keyboard Shortcuts](https://github.com/Microsoft/vscode-tips-and-tricks#change-your-keyboard-shortcuts)
+  * [Settings](https://github.com/Microsoft/vscode-tips-and-tricks#tune-your-settings)
+* [Extensions](https://github.com/Microsoft/vscode-tips-and-tricks#extensions)
+* [File and folder management](https://github.com/Microsoft/vscode-tips-and-tricks#file-and-folder-management)
+* [Editing hacks](https://github.com/Microsoft/vscode-tips-and-tricks#editing-hacks)
+* [Intellisense](https://github.com/Microsoft/vscode-tips-and-tricks#intellisense)
+* [Snippets](https://github.com/Microsoft/vscode-tips-and-tricks#snippets)
+  * `File -> Preferences -> User Snippets`
+* [Git Integration](https://github.com/Microsoft/vscode-tips-and-tricks#git-integration)
+* [Debugging](https://github.com/Microsoft/vscode-tips-and-tricks#debugging)
+* [Task Runner](https://github.com/Microsoft/vscode-tips-and-tricks#task-runner)
+
 
 ### Extensions
 
@@ -112,3 +134,4 @@ Scaffold  | Usage
 * [doggy8088/Angular4開發環境說明.md](https://gist.github.com/doggy8088/15e434b43992cf25a78700438743774a)
 * [Youtube Editor 編輯者](https://www.youtube.com/channel/UC8-c0VKKqkG_aPe0RG3SF0A)
 * [Angular Taiwan](https://forum.angular.tw)
+* [Awesome VSCode](https://github.com/viatsko/awesome-vscode)
