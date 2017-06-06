@@ -79,6 +79,8 @@ Capture from [Visual Studio Code Tips and Tricks](https://github.com/Microsoft/v
   * [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
   * [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
   * [Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory)
+  * [gitk](https://marketplace.visualstudio.com/items?itemName=howardzuo.vscode-gitk)
+  * [Better Merge](https://marketplace.visualstudio.com/items?itemName=pprice.better-merge)
   * [JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets)
   * [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint)
   * [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
