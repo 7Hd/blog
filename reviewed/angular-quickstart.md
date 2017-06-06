@@ -70,6 +70,18 @@ Capture from [Visual Studio Code Tips and Tricks](https://github.com/Microsoft/v
 * Recommended Extensions
   * [開發 Angular 必備 Visual Studio Code 擴充套件](https://paper.dropbox.com/doc/Angular-VSCode--Kh2w3saOyZtJSHawFoBem)
   * [Angular Extension Pack for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=doggy8088.angular-extension-pack)
+* List
+  * [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
+  * [Guides](https://marketplace.visualstudio.com/items?itemName=spywhere.guides)
+  * [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense)
+  * [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+  * [Project Manager](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager)
+  * [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+  * [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+  * [Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory)
+  * [JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets)
+  * [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint)
+  * [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
 * Install
   * [Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-gallery#_browse-and-install-extensions)
   * [Extension Packs](https://code.visualstudio.com/docs/extensionAPI/extension-manifest#_extension-packs)
@@ -135,3 +147,4 @@ Scaffold  | Usage
 * [Youtube Editor 編輯者](https://www.youtube.com/channel/UC8-c0VKKqkG_aPe0RG3SF0A)
 * [Angular Taiwan](https://forum.angular.tw)
 * [Awesome VSCode](https://github.com/viatsko/awesome-vscode)
+* [VS Code Introduction by crper](http://blog.csdn.net/bomess/article/category/5968809)
