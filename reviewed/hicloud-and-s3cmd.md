@@ -37,3 +37,9 @@ host_base = s3.hicloud.net.tw
 host_bucket = %(bucket)s.s3.hicloud.net.tw
 signature_v2 = True
 ```
+
+# Upload
+
+```bash
+s3cmd path/to/file.ipa s3://bucket/path/to/file.ipa -P
+```
