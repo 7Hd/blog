@@ -106,7 +106,7 @@
     </ul>
     ```
     * [NgFor](https://angular.io/guide/template-syntax#ngfor)
-    * [NgModel - Two-way binding to form elements with [(ngModel)]](https://angular.io/guide/template-syntax#ngModel)
+    * [Interpolation ( {{...}} )](https://angular.io/guide/template-syntax#interpolation----)
 2. 增加過濾條件
     ```ts
     export class AppComponent {
@@ -169,6 +169,7 @@
       <input class="edit" #edit (keyup.enter)="rename(todo, newName)" (blur)="todo.selected = false" [(ngModel)]="newName" autofocus>
     </li>
     ```
+    * [NgModel - Two-way binding to form elements with [(ngModel)]](https://angular.io/guide/template-syntax#ngModel)
     ```ts
     export class Appcomponent {
       newName: string;
