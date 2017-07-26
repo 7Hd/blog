@@ -231,3 +231,19 @@ Q: Template reference variables in ngfor
       user-select: none;
     }
     ```
+3. Debug Launch Setting
+    ```json
+    {
+      "version": "0.2.0",
+      "configurations": [
+        {
+          "type": "chrome",
+          "request": "launch",
+          "name": "Debug Angular-cli",
+          "url": "http://localhost:4200",
+          "sourceMaps": true,
+          "webRoot": "${workspaceRoot}"
+        }
+      ]
+    }
+    ```
