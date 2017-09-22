@@ -9,6 +9,7 @@
 # Hint
 
 * `http://USERNAME:PASSWORD@IP:PORT` 可以改為 `http://IP:PORT`。
+<!-- * For Allianz: `http://wsg1.allianz.corp:8080` -->
 
 # Setting
 
