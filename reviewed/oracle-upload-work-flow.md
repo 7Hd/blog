@@ -13,8 +13,8 @@
       3. alter Table
       4. click `View SQL` and copy SQL
       5. click `Apply` to commit
-2. Create `xxx.sql` file to `<FOLSER>\SQL` , `<FOLSER>\Tables` or `<FOLSER>\Sequences`.  `<FOLSER>` as blow:
-    * DEV: DEVDB for development (SAT)
+2. Create `xxx.sql` file to `<FOLDER>\SQL` , `<FOLDER>\Tables` or `<FOLDER>\Sequences`.  `<FOLDER>` as blow:
+    * `DEV`: DEVDB for development (SAT)
     * `UAT`: TESTDB for user (UAT)
     * `PreProb`: DRDB will copy Prob DB each day.
     * `Prod2`: for product
@@ -29,6 +29,10 @@
 4. Execute bat file
 
 # Other
+
+## Create Table
+
+建立 Table `TABLE_NAME` 則 SQL 檔案需命名為 `TABLE_NAME.sql`
 
 ## Garbled Text
 
