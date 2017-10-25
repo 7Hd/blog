@@ -49,7 +49,7 @@
         * ![](./assets/devmgmt.png)
     3. Until device show and click `確定`
         * ![](./assets/usb_debug.png)
-10. Run Poject to device
+10. Run Project to device
     * `cd TO/PROJECT/ROOT/FOLDER`
     * `npm run run:and`
       * (or run `cordova prepare android` and  `cordova run android --device`)
