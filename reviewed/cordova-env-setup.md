@@ -36,6 +36,9 @@ Ref: [Android Driver](http://j796160836.pixnet.net/blog/post/29610725-%5Bandroid
     * `mmc devmgmt.msc`
 2. update `ADB Interface` choose `PATH_TO\Android\android-sdk\extras\google\usb_driver`
 
+![](./assets/devmgmt.png)
+
+![](./assets/usb_debug.png)
 
 ## Gradle Proxy
 
