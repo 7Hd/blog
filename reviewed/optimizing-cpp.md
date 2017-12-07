@@ -25,7 +25,7 @@
     * `direct access to hardware interfaces`
     * `system call`
 * Development time 開發時間
-  * The development time and maintainability of C++ projects can be improved by consistent modularity and reusable classes.
+  * The development time and maintainability of C++ projects can be improved by consistent modularity and reusable classes. (模組化)
 * Security 安全
   * Standard C++ imple-mentations have **no checking** for `array bounds violations` and `invalid pointers`.
     * It is necessary to adhere to certain programming principles in order to prevent such errors in programs where security matters.
@@ -56,3 +56,52 @@
         * trap integer overflow with the option `-ftrapv`, but this is extremely inefficient,
         * get a compiler warning for such optimizations with option `-Wstrict-overflow=2`, or
         * make the overflow behavior well-defined with option `-fwrapv` or `-fno-strict-overflow`.
+
+# Finding the biggest time consumers
+
+使用 CPU `clock cycles` 作為測量單位
+
+## Use a profiler to find hot spots
+
+* Instrumentation
+  * compiler 插入額外的程式碼紀錄 function 執行次數與時間
+* Debugging
+* Time-based sampling 以時間為基礎的採樣
+  * 統計每次採樣時在哪個程式區塊
+* Event-based sampling
+  * 採樣特定 event 發生時所在程式區塊
+
+分析工具可能不准的問題點:
+
+* Coarse time measurement
+  * 測量的時間單位太寬
+* Execution time too small or too long
+* Waiting for user input
+* Interference from other processes 受其他程式干擾
+* Function addresses are obscured in optimized programs
+  * 無法取得對應 function
+* Uses debug version of the code
+* Jumps between CPU cores
+* Poor reproducibility
+  * 發生於次數少的特定 event 或不定時的 event
+
+替代方案:
+
+* 中斷點確認流程
+* 手動插入 code 測量呼叫次數, 時間
+  * 應使用 `#if` 來區隔測量的 code
+  * Windows 可使用 `GetTickCount`, `QueryPerformanceCounter` 來取得 millisecond 的時間
+  * Windows 可使用 `__rdtsc()` 來取得 CPU time stamp 的時間
+    * The time stamp counter becomes `invalid` if a thread jumps between different CPU cores
+    * You may have to fix the thread to a specific CPU core during time measurements to avoid this.
+      * In Windows, `SetThreadAffinityMask`, in Linux, `sched_setaffinity`
+
+## Most common time-consumers
+
+* Program installation
+* Automatic updates
+* Program loading
+* Dynamic linking and position-independent code
+  * Position-independent code is inefficient, especially in 32-bit mode
+* File access
+
