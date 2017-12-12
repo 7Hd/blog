@@ -104,4 +104,15 @@
 * Dynamic linking and position-independent code
   * Position-independent code is inefficient, especially in 32-bit mode
 * File access
+* System database
+  *  It is more efficient to store application-specific information in a separate file than in the big registration database in the Windows system.
+* Other databases
+  * It may be possible to replace a database by a plain old data file in simple cases
+* Graphics
+  * GUI
+* Other system resources
+  * Accessing system devices and using advanced facilities of the operating system can be time consuming because it may involve the loading of several drivers, configuration files and system modules
+* Network access
+  * These problems should be taken into account when deciding whether to store help files and other resources locally or remotely. If frequent updates are necessary then it may be optimal to mirror the remote data locally.
+* Memory access
 
