@@ -115,4 +115,10 @@
 * Network access
   * These problems should be taken into account when deciding whether to store help files and other resources locally or remotely. If frequent updates are necessary then it may be optimal to mirror the remote data locally.
 * Memory access
+* Context switches
+* Dependency chains
+  * In order to take advantage of out-of-order execution, you have to avoid long dependency chains.
+* Execution unit throughput 單位吞吐量
+
+
 
