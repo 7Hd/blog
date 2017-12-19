@@ -119,6 +119,47 @@
 * Dependency chains
   * In order to take advantage of out-of-order execution, you have to avoid long dependency chains.
 * Execution unit throughput 單位吞吐量
+  * There is an important distinction between the latency and the throughput of an execution unit.
+  * 若運算無相依性則可同可同步執行
 
+# Performance and usability
 
+對於效能與可用性上應注意的項目:
+
+* Big runtime frameworks
+* Memory swapping
+  * developers  RAM !== end user RAM
+* Installation problems
+  * The procedures for installation and uninstallation of programs should be standardized and done by the operating system rather than by individual installation tools.
+* Automatic updates
+* Compatibility problems
+  * All software should be tested on different platforms, different screen resolutions, different system color settings and different user access rights.
+* Copy protection
+* Hardware updating
+* Security
+* Background services
+* Feature bloat
+* Take user feedback seriously
+
+# Choosing the optimal algorithm
+
+* Don't use an advanced and complicated algorithm if a simple algorithm can do the job fast enough.
+* Boost collection contains well-tested libraries for many common purposes
+  * http://www.boost.org/
+* The insight you gain by testing and analyzing program performance and studying the bottlenecks can lead to a better understanding of the whole structure of the problem.
+  * 通過測試和分析程序性能以及研究瓶頸可以獲得的洞察力可以更好地理解問題的整體結構
+* A complete redesign of a program that already works is of course a considerable job, but it may be quite a good investment.
+* A redesign can not only improve the performance, it is also likely to lead to a more well-structured program that is easier to maintain.
+  * The time you spend on redesigning a program may in fact be less than the time you would have spent fighting with the problems of the original, poorly designed program.
+
+# Development process
+
+For team projects, it is recommended to use a version control tool.
+
+# The efficiency of different C++ constructs
+
+* double precision calculations are just as fast as single precision
+* template class is more efficient than a polymorphous class
+
+## Different kinds of variable storage
 
