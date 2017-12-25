@@ -183,7 +183,7 @@ For team projects, it is recommended to use a version control tool.
     * can assume that there are no caching problems for integer constants.
 * Register storage
   * A register is a small piece of memory inside the CPU used for temporary storage.
-  * Variables that are stored in registers are accessed very fast.
+  * Variables that are stored in registers are `accessed very fast`.
   * The same register can be used for multiple variables as long as their uses (live ranges) do not overlap.
 * Volatile
   * The `volatile` keyword specifies that a variable can be changed by another thread.
@@ -200,7 +200,7 @@ For team projects, it is recommended to use a version control tool.
   * keyword `far` (arrays can also be `huge`)
   * Far storage, far pointers, and far procedures are `inefficient`
   * recommended to use a different operating systems that allows bigger segments
-*  Dynamic memory allocation
+* Dynamic memory allocation
   * Dynamic memory allocation is done with the operators `new` and `delete` or with the functions `malloc` and `free`.
     * These operators and functions `consume a significant amount of time`.
   *  A part of memory called the `heap` is reserved for dynamic allocation.
