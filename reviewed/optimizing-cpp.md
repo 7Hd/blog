@@ -247,3 +247,25 @@ For team projects, it is recommended to use a version control tool.
 
 ## Floating point variables and operators
 
+* two different types of floating point registers and correspondingly two different types of floating point instructions.
+* The `original` method of doing floating point operations involves eight floating point registers organized as a register stack.
+  * These registers have long double precision (80 bits).
+  * advantages
+    * All calculations are done with `long double precision`.
+    * Conversions between different precisions take `no extra time`
+    * There are intrinsic instructions for `mathematical functions` such as logarithms and trigonometric functions
+    * The code is `compact` and `takes little space` in the code cache
+  * disadvantages
+    * It is difficult for the compiler to make register variables because of the way the register stack is organized.
+    * Floating point comparisons are slow
+      * unless the Pentium-II or later instruction set is enabled.
+    * Conversions between integers and floating point numbers is `inefficient`
+    * Division, square root and mathematical functions `take more time` to calculate when long double precision is used.
+* A `newer` method of doing floating point operations involves eight or sixteen `vector registers` (XMM or YMM) which can be used for multiple purposes.
+  * advantages
+    * It is easy to make floating point register variables
+    * Vector operations are available for doing `parallel` calculations on vectors of two double precision or four single precision variables in the XMM registers
+  * disadvantages
+    * Long double precision is not supported
+    * The calculation of expressions where operands have `mixed` precision require precision conversion instructions which can be quite `time-consuming`
+    * Mathematical functions must use a function library, but this is often faster than the intrinsic hardware functions.
