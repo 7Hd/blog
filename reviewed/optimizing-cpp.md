@@ -217,3 +217,33 @@ For team projects, it is recommended to use a version control tool.
 
 ## Integers variables and operators
 
+* Integer sizes
+  * Integers can be different sizes, and they can be `signed` or `unsigned`.
+  * standard header file `stdint.h` or `inttypes.h` is available then it is recommended to use that for a portable way of defining integer types of a specific size.
+  * it is `inefficient` to use an integer size that is larger than the largest available register size.
+  * It is `recommended` to use the default integer size in cases where the size doesn't matter and there is no risk of overflow
+    * In large arrays, it may be preferred to use the smallest integer size that is big enough for the specific purpose in order to make better use of the data cache.
+  * When considering whether a particular integer size is big enough for a specific purpose,
+    * must consider if intermediate calculations can cause overflow.
+* Signed versus unsigned integers
+  * In most cases, there is no difference in speed between using signed and unsigned integers.
+  * But there are a few cases where it matters:
+    * Unsigned is faster than signed when you divide (`/`) an integer with a constant
+      * This also applies to the modulo operator `%`.
+    * Conversion to floating point is faster with signed than with unsigned integers for most instruction sets
+    * Overflow behaves differently on signed and unsigned variables.
+  * The conversion between signed and unsigned integers is `costless`
+  * Be sure not to mix signed and unsigned integers in comparisons, such as `<`.
+    * The result of comparing signed with unsigned integers is `ambiguous` and may produce undesired results.
+* Integer operators
+  * Integer operations are generally very fast.
+  * `Multiplication` and `division` take longer time.
+    * Integer multiplication takes `11` clock cycles on Pentium 4 processors, and `3 - 4` clock cycles on most other microprocessors.
+    * Integer division takes `40 - 80` clock cycles, depending on the microprocessor.
+* Increment and decrement operators
+  * pre-increment `++i` or post-increment `i++`
+  * `x = array[i++]` is more `efficient` than `x = array[++i]`
+    * 後者 `x` 取得前須先計算 `++i`
+
+## Floating point variables and operators
+
