@@ -163,3 +163,57 @@ For team projects, it is recommended to use a version control tool.
 
 ## Different kinds of variable storage
 
+* Storage on the stack
+  * Variables and objects declared inside a function are stored on the stack
+  * The stack is a part of memory that is organized in a first-in-last-out fashion.
+  * It is used for storing:
+    * function return addresses (i.e. where the function was called from),
+    * function parameters,
+    * local variables,
+    * and for saving registers that have to be restored before the function returns.
+  * The stack is the `most efficient memory space to store data` because the same range of memory addresses is reused again and again.
+  * **all variables and objects should preferably be declared inside the function in which they are used.**
+* Global or static storage
+  * Variables that are declared outside of any function are called global variables.
+  * Global variables are stored in a static part of the memory.
+  * The advantage of static data is that it can be initialized to desired values before the program starts.
+  * The disadvantage is that the memory space is occupied throughout the whole program execution
+  * String constants and floating point constants are stored in static memory in optimized code.
+  * Integer constants are usually included as part of the instruction code.
+    * can assume that there are no caching problems for integer constants.
+* Register storage
+  * A register is a small piece of memory inside the CPU used for temporary storage.
+  * Variables that are stored in registers are accessed very fast.
+  * The same register can be used for multiple variables as long as their uses (live ranges) do not overlap.
+* Volatile
+  * The `volatile` keyword specifies that a variable can be changed by another thread.
+  * This prevents the compiler from making optimizations that rely on the assumption that the variable always has the value it was assigned previously in the code.
+  * The effect of the keyword `volatile` is that it makes sure the variable is stored in memory rather than in a register and prevents all optimizations on the variable.
+    * This can be useful in test situations to avoid that some expression is optimized away.
+  * It `doesn't` prevent two threads from attempting to write the variable at the same time.
+* Thread-local storage
+  * Most compilers can make thread-local storage of static and global variables by using the keyword `__thread` or `__declspec(thread)`.
+  * Thread-local storage is `inefficient` because it is accessed through a pointer stored in a thread environment block
+  * Thread-local storage should be avoided
+  * Variables stored on the stack always belong to the thread in which they are created.
+* Far
+  * keyword `far` (arrays can also be `huge`)
+  * Far storage, far pointers, and far procedures are `inefficient`
+  * recommended to use a different operating systems that allows bigger segments
+*  Dynamic memory allocation
+  * Dynamic memory allocation is done with the operators `new` and `delete` or with the functions `malloc` and `free`.
+    * These operators and functions `consume a significant amount of time`.
+  *  A part of memory called the `heap` is reserved for dynamic allocation.
+  * The heap can easily become fragmented when objects of different sizes are allocated and deallocated in random order.
+  * The heap manager can spend a lot of time cleaning up spaces that are no longer used and searching for vacant spaces.
+    * This is called `garbage collection`.
+  * Dynamic memory allocation also tends to make the code more complicated and error-prone.
+* Variables declared inside a class
+  * Variables declared inside a class are stored in the order in which they appear in the class declaration.
+  * The type of storage is determined where the object of the class is declared
+  * An object cannot be stored in a register except in the simplest cases, but its data members can be copied into registers.
+  * A class member variable with the `static` modifier will be stored in static memory and will have one and only one instance.
+  * Storing variables in a class or structure is a good way of making sure that variables that are used in the same part of the program are also stored near each other.
+
+## Integers variables and operators
+
