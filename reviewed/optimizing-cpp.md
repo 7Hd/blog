@@ -269,3 +269,64 @@ For team projects, it is recommended to use a version control tool.
     * Long double precision is not supported
     * The calculation of expressions where operands have `mixed` precision require precision conversion instructions which can be quite `time-consuming`
     * Mathematical functions must use a function library, but this is often faster than the intrinsic hardware functions.
+  * In most cases, double precision calculations take no more time than single precision.
+    * Long double precision takes only slightly more time.
+  * Floating point addition takes `3 - 6` clock cycles, depending on the microprocessor.
+    * Multiplication takes `4 - 8` clock cycles. Division takes `14 - 45` clock cycles.
+    * Floating point `comparisons` are `inefficient` when the floating point stack registers are used.
+    * `Conversions` of float or double to integer `takes a long time` when the floating point stack registers are used.
+  * Do `not` mix single and double precision when the XMM registers are used
+  * `Avoid` conversions between integers and floating point variables
+  * It is strongly recommended to set the flush-to-zero mode unless you have special reasons to use subnormal numbers.
+    * ` flush-to-zero` mode
+      ```cpp
+      // Example 7.5. Set flush-to-zero mode (SSE):
+      #include <xmmintrin.h>
+      _MM_SET_FLUSH_ZERO_MODE(_MM_FLUSH_ZERO_ON);
+      ```
+    * `denormals-are-zero` mode
+      ```cpp
+      // Example 7.6. Set flush-to-zero and denormals-are-zero mode (SSE2):
+      #include <xmmintrin.h>
+      _mm_setcsr(_mm_getcsr() | 0x8040);
+      ```
+
+## Enums
+
+* An `enum` is simply an integer in disguise.
+* Enums are exactly as efficient as integers.
+* Enums in header files should therefore have `long and unique enumerator names` or be put `into a namespace`.
+
+## Booleans
+
+* The order of Boolean operands
+  * `&&`, `||` 容易造成判斷的項目應放在前面
+  * If one operand is `more predictable` than the other, then put the most predictable operand first.
+  * If one operand is `faster to calculate` than the other then put the operand that is calculated the fastest first.
+* Boolean variables are overdetermined
+  * Boolean variables are stored as `8-bit integers` with the value 0 for false and 1 for true.
+  * Don't change `&&` to `&` unless you expect the `&&` expression to generate many branch mispredictions.
+* Boolean vector operations
+  * An integer may be used as a Boolean vector.
+  * The operators `&`, `|`, `^`, `~` are useful for Boolean vector operations.
+
+## Pointers and references
+
+* Pointers versus references
+  * Pointers and references are `equally` efficient because they are in fact doing the same thing.
+  * advantages of using pointers
+    * `*` 可清楚顯示其為 Pointers
+    * It is possible to do things with pointers that are impossible with references.
+      * You can change what a pointer points to and you can do arithmetic operations with pointers.
+  * advantages of using references
+    * The syntax is simpler when using references
+    * References are `safer` to use than pointers because in most cases they are sure to point to a valid address
+    * References are useful for copy constructors and overloaded operators
+    * Function parameters that are declared as constant references accept expressions as arguments while pointers and non-constant references require a variable.
+* Efficiency
+  * Accessing a variable or object through a pointer or reference may be just as fast as accessing it directly.
+  * disadvantages of using pointers and references
+    * it requires an extra register to hold the value of the pointer or reference
+    *
+* Pointer arithmetic
+
