@@ -105,7 +105,7 @@
   * Position-independent code is inefficient, especially in 32-bit mode
 * File access
 * System database
-  *  It is more efficient to store application-specific information in a separate file than in the big registration database in the Windows system.
+  * It is more efficient to store application-specific information in a separate file than in the big registration database in the Windows system.
 * Other databases
   * It may be possible to replace a database by a plain old data file in simple cases
 * Graphics
@@ -203,7 +203,7 @@ For team projects, it is recommended to use a version control tool.
 * Dynamic memory allocation
   * Dynamic memory allocation is done with the operators `new` and `delete` or with the functions `malloc` and `free`.
     * These operators and functions `consume a significant amount of time`.
-  *  A part of memory called the `heap` is reserved for dynamic allocation.
+  * A part of memory called the `heap` is reserved for dynamic allocation.
   * The heap can easily become fragmented when objects of different sizes are allocated and deallocated in random order.
   * The heap manager can spend a lot of time cleaning up spaces that are no longer used and searching for vacant spaces.
     * This is called `garbage collection`.
@@ -327,6 +327,113 @@ For team projects, it is recommended to use a version control tool.
   * Accessing a variable or object through a pointer or reference may be just as fast as accessing it directly.
   * disadvantages of using pointers and references
     * it requires an extra register to hold the value of the pointer or reference
-    *
 * Pointer arithmetic
+  * A pointer is in fact an `integer` that holds a memory address.
+  * Pointer arithmetic operations are therefore as fast as integer arithmetic operations.
+  * Comparing two pointers requires only an integer comparison
+  * Calculating the difference between two pointers requires a division, which is slow
+  * The object pointed to can be accessed approximately `two clock` cycles after the value of the pointer has been calculated
+  * it is recommended to calculate the value of a pointer well before the pointer is used.
+    `* x = *(p++)` is more efficient than `x = *(++p)`
+
+## Function pointers
+
+* Calling a function through a function pointer typically takes a `few` clock cycles `more` than calling the function directly if the target address can be predicted
+
+## Member pointers
+
+* In simple cases, a data member pointer simply stores the offset of a data member relative to the beginning of the object, and a member function pointer is simply the address of the member function.
+* https://stackoverflow.com/questions/670734/c-pointer-to-class-data-member
+
+## Smart pointers
+
+* A smart pointer is an object that behaves like a pointer
+  * It has the special feature that the object it points to is deleted when the pointer is deleted
+* The purpose of using smart pointers is to make sure the object is deleted properly and the memory released when the object is no longer used
+* `auto_ptr`, `shared_ptr`
+* `no` extra cost to accessing an object through a smart pointer
+* extra `cost` whenever a smart pointer is `created`, `deleted`, `copied` or `transferred` from one function to another.
+  * These costs are higher for shared_ptr than for auto_ptr
+* If the same function or class is responsible for creating and deleting the object then you `don't` need a smart pointer.
+
+## Arrays
+
+* An array is implemented simply by storing the elements consecutively in memory.
+  * No information about the dimensions of the array is stored.
+* multidimensional array
+  * The size of all but the first dimension may preferably be a power of 2 if the rows are indexed in a non-sequential order in order to make the address calculation more efficient
+  * The same advice applies to arrays of structure or class objects.
+
+## Type conversions
+
+  ```cpp
+  int i;  float f;
+  f = i;                      // Implicit type conversion
+  f = (float)i;               // C-style type casting
+  f = float(i);               // Constructor-style type casting
+  f = static_cast<float>(i);  // C++ casting operator
+  ```
+* Signed / unsigned conversion
+  * Conversions between signed and unsigned integers simply makes the compiler interpret the bits of the integer in a different way.
+  * There is no checking for overflow, and the code takes no extra time.
+  * These conversions can be used freely `without any cost` in performance.
+* Integer size conversion
+  * An integer is converted to a longer size by extending the sign-bit if the integer is signed, or by extending with zero-bits if unsigned.
+    * This typically takes `one` clock cycle if the source is an arithmetic expression.
+* Floating point precision conversion
+  * Conversions between `float`, `double` and `long double` `take no extra time` when the floating point register stack is used.
+    * It takes between `2 and 15` clock cycles (depending on the processor) when the XMM registers are used.
+* Integer to float conversion
+  * Conversion of a signed integer to a float or double takes `4 - 16` clock cycles, depending on the processor and the type of registers used
+  * Conversion of an unsigned integer takes `longer time`.
+    * It is faster to first convert the unsigned integer to a signed integer if there is no risk of overflow
+      * `d = (double)(signed int)u`
+  * Integer to float conversions can sometimes be avoided by replacing an integer variable by a float variable
+    * `i * 2` -> `i * 2.0f`
+* Float to integer conversion
+  * Conversion of a floating point number to an integer `takes a very long time` unless the SSE2 or later instruction set is enabled
+    * Typically, the conversion takes `50 - 100` clock cycles.
+  * Possible solutions:
+    * Avoid the conversions by using different types of variables.
+    * Move the conversions out of the innermost loop by storing intermediate results as floating point.
+    * Use 64-bit mode or enable the SSE2 instruction set (requires a microprocessor that supports this)
+    * Use `rounding` instead of `truncation` and make a round function using assembly language.
+* Pointer type conversion
+  * A pointer can be converted to a pointer of a different type, integer
+  * These conversions do not produce any extra code.
+    * It is simply a matter of interpreting the same bits in a different way or bypassing syntax checks.
+* Re-interpreting the type of an object
+  * It is possible to make the compiler treat a variable or object as if it had a different type by type-casting its address
+  ```cpp
+  float x;
+  *(int*)&x |= 0x80000000;   // Set sign bit of x
+  ```
+  * There are a number of dangers to be aware of when type-casting pointers:
+    * The trick `violates` the strict aliasing rule of standard C, specifying that two pointers of different types cannot point to the same object (except for char pointers).
+    * The trick will `fail` if the object is treated as bigger than it actually is. This above code will fail if an int uses more bits than a float.
+    * If you access part of a variable, for example 32 bits of a 64-bit double, then the code will `not be portable` to platforms that use big endian storage.
+    * If you access a variable in parts, for example if you write a 64-bit double 32 bits at a time, then the code is likely to execute slower than intended because of a store forwarding delay in the CPU
+* Const cast
+  * The `const_cast` operator is used for relieving the `const` restriction from a pointer.
+    * it doesn't generate any extra code and doesn't take any extra time.
+  ```cpp
+  const int x = 0; // constant data
+  *const_cast<int*>(&x) += 2;
+  ```
+* Static cast
+  * The `static_cast` operator does the same as the C-style type-casting.
+* Reinterpret cast
+  * The `reinterpret_cast` operator is used for pointer conversions.
+  * It does the same as C-style type-casting with a little more syntax check.
+  * It does not produce any extra code.
+* Dynamic cast
+  * The `dynamic_cast` operator is used for converting a pointer to one class to a pointer to another class.
+    * It makes a `runtime check` that the conversion is valid.
+  * This check makes `dynamic_cast` `more time-consuming` than a simple type casting, but also safer.
+  * It may catch programming errors that would otherwise go undetected.
+* Converting class objects
+  * Conversions involving class objects (rather than pointers to objects) are possible `only` if the programmer has defined a `constructor`, an `overloaded` assignment operator, or an `over-loaded type casting operator` that specifies how to do the conversion.
+  * The constructor or overloaded operator is as efficient as a member function
+
+## Branches and switch statements
 
