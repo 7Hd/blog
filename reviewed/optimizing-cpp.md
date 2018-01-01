@@ -437,3 +437,14 @@ For team projects, it is recommended to use a version control tool.
 
 ## Branches and switch statements
 
+* The high speed of modern microprocessors is obtained by using a pipeline where instructions are fetched and decoded in several stages before they are executed.
+  * the pipeline structure has one big problem:
+    * 當 Code 有分支(`if`, `else`)時，無法預先判斷該將哪個分支放入 `pipeline` 可能會造成多花 `10 - 20` clock cycles 執行 fetching, decoding
+    * A branch instruction takes typically `0 - 2` clock cycles in the case that the microprocessor has made the right prediction.
+    * The time it takes to recover from a branch misprediction is approximately `12 - 25` clock cycles, depending on the processor. This is called the branch misprediction penalty
+  * A branch that follows a `simple periodic pattern` can also be predicted quite well if it is inside a loop with few or no other branches.
+  * A `for-loop` or `while-loop` is also a kind of branch.
+    *  After each iteration it decides whether to repeat or to exit the loop.
+    * The maximum loop count that can be predicted perfectly varies `between 9 and 64`, depending on the processor
+    * Nested loops are predicted well only on some processors
+* A `switch` statements is a kind of branch that can go `more than two ways`.
