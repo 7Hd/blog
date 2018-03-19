@@ -28,3 +28,20 @@ wait(NULL);
 // pause
 pause();
 ```
+
+* top
+
+顯示某個程式 thread 所在 cpu
+
+```sh
+top -p <PID> -H
+
+# Fields Management
+f
+
+# open: P       = Last Used Cpu (SMP)
+<space>
+
+# go back
+q
+```
