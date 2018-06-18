@@ -1,0 +1,77 @@
+Go 入門簡介
+2 Jan 2018
+Tags:
+
+PH Lin
+
+
+
+* Introduction
+
+Go 語言，也稱為 Golang，是一個靜態型別的 (statically-typed) 通用型 (general-purpose) 編譯 (compiled) 程式語言，由 Google 公同主導開發。
+
+Go 程式碼本身就是跨平台的，不需要像 C 或 C++ 般利用條件編譯來滿足跨平台的需求；另外，也不需要像 Java 或 C# 般，需要額外的運行環境 (runtime environment)，可以直接發布二進位檔。
+
+大部分現行的主流語言對於共時性程式多以傳統的執行緒 (thread) 為基礎來撰寫，程式碼相對低階，需要處理的細節較多；相對來說，Go 在語法層面即內建對於共時性 (concurrency) 程式的支援，使得撰寫共時性程式更加簡單。
+
+
+* Feature
+
+- 開放原始碼 (open source)
+- 靜態型別的編譯語言；但語法類似腳本語言 (scripting language)
+- 跨平台 (cross-platform)
+- 內建全自動垃圾回收 (garbage collection)
+- 內建平行處理 (concurrency) 的語法
+- 內建函式程式設計 (functional programming)
+- 輕量級物件 (object) 系統
+- 程式風格強制統一
+- 內建開發相關工具
+- 豐富的標準函式庫
+- testing support
+
+
+* Consideration
+
+Go 語言承襲 C 語言的思想，再加上輕量級物件 (lightweight objects) 及垃圾回收 (garbage collections)。在這樣的思維下，Go 語言刻意地在語法上保持簡單化、最小化，缺乏許多現代語言常見的特性:
+
+- 缺乏泛型 (generics)
+- 缺乏函式重載 (function overloading)
+- 缺乏運算子重載 (operator overloading)
+- 缺乏列舉 (enumration)
+- 強制程式碼風格
+
+: 缺乏這些特性不會導致我們無法撰寫程式，只是要用其他的手法達成目的
+
+* Consideration
+
+Go 適合的應用:
+
+- 終端機程式 (console application)
+  Go 程式碼、標準函式庫、編譯環境都是跨平台的，在字串處理也較高階，加快程式的撰寫。
+- 圖形介面程式 (graphic user interface application)
+  需搭配其他 GUI Library
+- 網頁程式 (web application) 和其他伺服器程式 (server application)
+   Go 對伺服器程式的支援相當地完善，除此之外也有許多社群套件
+- 行動程式 (mobile application)
+  目前還是實驗性質 (experimental)
+- 元件 (component)，即其他高階語言的延伸模組 (extension module)
+
+* Hello World
+
+.play -edit -numbers src/hw/main.go
+
+  $ go run hello.go
+  // or
+  $ go build hello.go
+  $ ./hello
+
+
+* Struct
+
+.code -numbers src/struct/main.go /^type/,/^}/
+.play -numbers src/struct/main.go /^func/,/^}/
+
+* Ref
+
+- [[https://bluxte.net/musings/2018/04/10/go-good-bad-ugly/][Go: the Good, the Bad and the Ugly]]
+- [[https://cwchen.tw/golang-prog/][MICHAEL CHEN 的技術文件分享]]
