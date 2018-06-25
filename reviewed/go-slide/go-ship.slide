@@ -66,10 +66,44 @@ Go 適合的應用:
   $ ./hello
 
 
+* Variable
+
+變數宣告的兩種方式:
+
+.play src/variable/main.go /^func/,/^}/
+
+
+* Data Type
+
+- 基本型別 (basic types)
+- 聚合型別 (aggregate types)
+  - 陣列 (array)
+  - 結構 (struct)
+- 參考型別 (reference Types)
+  - 指標 (pointer)
+  - 切片 (slice)
+  - 字典 (map)
+  - 函式 (function)
+  - 通道 (channels)
+- 介面型別 (interface types)
+  - interface
+
+
 * Struct
+
+`struct` 使用方式:
 
 .code -numbers src/struct/main.go /^type/,/^}/
 .play -numbers src/struct/main.go /^func/,/^}/
+
+
+* Array and Slice
+
+- Array 建立時需設定長度，且建立後長度不能改變
+- Slice 不需預設其長度，且本身不儲存值，而是儲存到陣列的參考 (reference)
+
+.play -edit -numbers src/arrayandslice/main.go /^func/,/^}/
+
 
 * Ref
 
