@@ -60,6 +60,8 @@ Go 適合的應用:
 
 .play -edit -numbers src/hw/main.go
 
+編譯方式:
+
   $ go run hello.go
   // or
   $ go build hello.go
@@ -91,19 +93,66 @@ Go 適合的應用:
 
 * Struct
 
-`struct` 使用方式:
-
+`struct` 定義
 .code -numbers src/struct/main.go /^type/,/^}/
-.play -numbers src/struct/main.go /^func/,/^}/
+member function
+.code -numbers src/struct/main.go /^func/,/^}/
+main function
+.play -numbers src/struct/main.go /^func main/,/^}/
 
 
-* Array and Slice
+* Array, Slice and Map
 
 - Array 建立時需設定長度，且建立後長度不能改變
 - Slice 不需預設其長度，且本身不儲存值，而是儲存到陣列的參考 (reference)
 
-.play -edit -numbers src/arrayandslice/main.go /^func/,/^}/
+.play -edit -numbers src/arraysliceandmap/main.go /^func/,/^}/
 
+
+* Interface
+
+`interface` 定義
+.code -numbers src/interface/main.go /^type/,/^}/
+`struct` 定義
+.code -numbers src/interface/main.go /^type/,/^}/
+
+
+* Interface
+member function
+.code -numbers src/interface/main.go /START OMIT/,/END OMIT/
+embedded interface
+.code -numbers src/interface/main.go /^type IPoint3D/,/^}/
+
+
+* Interface
+
+main function
+.play -numbers -edit src/interface/main.go /^func main/,/^}/
+
+
+* Interface
+
+`any`
+
+  var v interface{}
+  v = 1
+  v = "Hello"
+  v = true
+  v = Point{}
+
+  // type assertion
+  v2 := v.(int)
+  // type assertion with check
+  v3, ok := v.(int)
+
+  // type assertion with switch
+  switch v4 := v.(type) {
+  default:
+  case bool:
+  case int:
+  case *bool:
+  case *int:
+  }
 
 * Ref
 
