@@ -154,6 +154,25 @@ main function
   case *int:
   }
 
+
+* Error Handling
+
+
+* Functional Programming
+
+
+* Higher-Order Function
+
+
+* Generics
+
+
+* Concurrency
+
+
+* Package
+
+
 * Ref
 
 - [[https://bluxte.net/musings/2018/04/10/go-good-bad-ugly/][Go: the Good, the Bad and the Ugly]]
