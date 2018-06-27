@@ -177,8 +177,14 @@ main function
 
 * Functional Programming
 
-
-* Higher-Order Function
+- First-class and Higher-order functions
+.code src/fp/main.go /fn :=/,/}/
+.code src/fp/main.go /^func hrfn/,/^}/
+: 可當參數且可傳遞至其他 func
+- Closure
+.code src/fp/main.go /^func closure/,/^}/
+- Pure Function
+- Type Inference
 
 
 * Generics
