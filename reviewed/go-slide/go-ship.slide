@@ -157,6 +157,23 @@ main function
 
 * Error Handling
 
+- 沒有 `throw` ，也沒有 `try` … `catch` … `finally`
+- 錯誤物件通常會和其他值一併回傳，自行檢查及決定下一個步驟
+
+.code -numbers src/error/main.go /^func catcherror/,/^}/
+
+- 呼叫 `panic` 則立即中斷程式
+
+.code -numbers src/error/main.go /^func callpanic/,/^}/
+
+
+* Error Handling
+
+- `recover` 可以截獲 `panic` 產生的 `error`，但須放在 `defer` function 內
+- `defer` function 離開當前 (`main`) function 時觸發
+
+.play -numbers src/error/main.go /^func main/,/^}/
+
 
 * Functional Programming
 
@@ -171,6 +188,16 @@ main function
 
 
 * Package
+
+下載第三方 Package:
+
+  go get github.com/gotk3/gotk3/gtk
+
+Package Manager
+
+- [[https://golang.github.io/dep/][dep]]
+- [[https://github.com/kardianos/govendor][govendor]]
+- [[https://github.com/golang/vgo][vgo]]
 
 
 * Ref
