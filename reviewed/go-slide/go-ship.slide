@@ -189,6 +189,9 @@ main function
 
 * Generics
 
+- 內建容器中，array, slice, map 等，是支援泛型的
+- 對泛型的支援也僅止於此，其他的部分就無法使用泛型
+
 
 * Concurrency
 
