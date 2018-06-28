@@ -5,6 +5,13 @@ Tags:
 PH Lin
 
 
+* View
+
+- [[https://go-talks.appspot.com/github.com/7Hd/blog/reviewed/go-slide/go-ship.slide][Online]]
+- Offline
+  Install go
+  go get golang.org/x/tools/present
+
 
 * Introduction
 
