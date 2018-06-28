@@ -189,8 +189,44 @@ main function
 
 * Generics
 
-- 內建容器中，array, slice, map 等，是支援泛型的
-- 對泛型的支援也僅止於此，其他的部分就無法使用泛型
+內建容器中，array, slice, map 等，是支援泛型的，但對泛型的支援也僅止於此，其他的部分就無法使用泛型
+
+替代策略:
+
+- 介面
+- 空介面
+- 程式碼生成
+- 發展新語言
+
+
+* Generics
+
+- `interface`
+
+.code -numbers src/generics/main.go /IFN/,/^}/
+.code -numbers src/generics/main.go /genericsFN/,/^}/
+
+
+* Generics
+
+- `interface{}`
+
+.code -numbers src/generics/main.go /func any/,/^}/
+
+
+* Generics
+
+程式碼生成
+
+- 透過 template 建立各種 type 的 code
+- [[https://github.com/cheekybits/genny][genny]]
+- [[./src/generics/template.go][template.go]]
+- [[./src/generics/queue.go][queue.go]]
+
+發展新語言
+
+- 同 `TypeScript` 功能
+- [[https://github.com/lukechampine/ply][ply]]
 
 
 * Concurrency
@@ -213,3 +249,5 @@ Package Manager
 
 - [[https://bluxte.net/musings/2018/04/10/go-good-bad-ugly/][Go: the Good, the Bad and the Ugly]]
 - [[https://cwchen.tw/golang-prog/][MICHAEL CHEN 的技術文件分享]]
+- [[https://godoc.org/golang.org/x/tools/present][GoDoc - present]]
+- [[http://www.evanlin.com/til-golang-present/][來用 Golang Present 製造 Golang 專屬投影片]]
