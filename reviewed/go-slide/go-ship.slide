@@ -45,7 +45,6 @@ Go 語言承襲 C 語言的思想，再加上輕量級物件 (lightweight object
 - 缺乏函式重載 (function overloading)
 - 缺乏運算子重載 (operator overloading)
 - 缺乏列舉 (enumration)
-- 強制程式碼風格
 
 : 缺乏這些特性不會導致我們無法撰寫程式，只是要用其他的手法達成目的
 
@@ -190,9 +189,14 @@ main function
 : 可當參數且可傳遞至其他 func
 - Closure
 .code src/fp/main.go /^func closure/,/^}/
-- Pure Function
-- Type Inference
 
+
+* Functional Programming
+
+- Pure Function
+.code src/fp/main.go /^func pure/,/^}/
+- Type Inference
+  c := "c type will be string"
 
 * Generics
 
@@ -237,6 +241,15 @@ main function
 
 
 * Concurrency
+
+`goroutine`
+.code -numbers src/concurrency/main.go /func goroutinefn/,/^}/
+
+
+* Concurrency
+
+`Channel`
+.code -numbers src/concurrency/main.go /func channel/,/^}/
 
 
 * Package

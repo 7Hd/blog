@@ -17,6 +17,10 @@ func closure() func() int {
 	}
 }
 
+func pure(a, b int) int {
+	return a + b
+}
+
 func main() {
 	fn := func(i int) int { return i + 1 }
 	fmt.Println("hrfn(fn)", hrfn(fn))
